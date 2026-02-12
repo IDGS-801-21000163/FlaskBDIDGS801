@@ -1,0 +1,34 @@
+{% macro datos(nombre,placeholder,tipo='text')%}
+
+<div class="mb-3">
+    <label for="{{nombre}}" class="form-label">{{nombre}}</label>
+    <input type="{{tipo}}" class="form-control" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
+</div>
+
+{%endmacro%}
+
+{% macro datosNuevo(nombre, placeholder, tipo='text') %}
+<div class="mb-3">
+    <label for="{{ nombre }}" class="form-label">{{ nombre }}</label>
+    <input
+        type="{{ tipo }}"
+        class="form-control"
+        id="{{ nombre }}"
+        name="{{ nombre }}"
+        placeholder="{{ placeholder }}"
+        required
+    >
+</div>
+{% endmacro %}
+
+{% macro campoNuevo(field) %}
+
+    <td>{{field.label}}</td>
+    <dd>{{field(**kwargs) | safe}}</dd>
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <li style="color: red">{{error}}</li>
+        {%endfor%}
+    {%endif%}
+
+{%endmacro%}

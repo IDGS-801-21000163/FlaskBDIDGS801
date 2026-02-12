@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>404 - Página no encontrada</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+        animation: fadeIn 1.2s ease;
+    }
+
+    .code {
+        font-size: 120px;
+        font-weight: 800;
+        background: linear-gradient(45deg, #38bdf8, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .title {
+        font-size: 28px;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+
+    .message {
+        font-size: 16px;
+        opacity: 0.6;
+        margin-bottom: 35px;
+    }
+
+    .button {
+        text-decoration: none;
+        padding: 12px 28px;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #38bdf8, #818cf8);
+        color: white;
+        font-weight: 600;
+        transition: 0.3s ease;
+        display: inline-block;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .code {
+            font-size: 80px;
+        }
+        .title {
+            font-size: 22px;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="code">404</div>
+        <div class="title">Oops… página no encontrada</div>
+        <div class="message">
+            Parece que lo que buscabas decidió tomarse vacaciones 🏖️
+        </div>
+        <a href="/" class="button">Volver al inicio</a>
+    </div>
+</body>
+</html>
