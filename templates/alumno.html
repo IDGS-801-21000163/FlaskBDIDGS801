@@ -1,23 +1,26 @@
 {% extends "layout.html" %}
 
 {% block container %}
-<form class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg">
+
+<div class="flex justify-center align-center">
+<form class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg" method="post" action="/alumno">
 
     <div class="flex gap-6">
 
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="relative z-0 w-1/2 mb-5 group">
-            <input type="email"
+            <input type="text"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
-                   placeholder=" " required/>
+                   placeholder=" " name="nombre" required/>
             <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Nombre
             </label>
         </div>
 
         <div class="relative z-0 w-1/2 mb-5 group">
-            <input type="email"
+            <input type="text"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
-                   placeholder=" " required/>
+                   placeholder=" " name="apaterno" required/>
             <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Apellido paterno
             </label>
@@ -30,7 +33,7 @@
         <div class="relative z-0 w-full mb-5 group">
             <input type="email"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-500 peer"
-                   placeholder=" " required/>
+                   placeholder=" " name="email" required/>
             <label class="absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Email
             </label>
@@ -44,5 +47,6 @@
     </button>
 
 </form>
+    </div>
 
 {%endblock%}
