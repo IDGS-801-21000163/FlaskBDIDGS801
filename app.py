@@ -34,6 +34,32 @@ def alumno():
 		db.session.commit()
 		return redirect(url_for('index'))###
 
+@app.route("/detalles", methods=['GET'])
+def detalles():
+	alumno = Alumno.query.get(request.args.get('id'))
+
+	return render_template('detalles.html', nombre=alumno.nombre, apaterno=alumno.apaterno, email=alumno.email)
+
+
+@app.route("/modificar", methods=['GET', 'POST'])
+def modificar():
+	if (request.method == 'GET'):
+		alumno = Alumno.query.get(request.args.get('id'))
+		return render_template('modificar.html', alumno=alumno)
+
+	if (request.method == 'POST'):
+		create_form = forms.UserForm(request.form)
+
+		alumno = Alumno.query.get(create_form.id.data)
+
+		alumno.nombre = create_form.nombre.data
+		alumno.apaterno = create_form.apaterno.data
+		alumno.email = create_form.email.data
+
+		db.session.commit()
+
+		return redirect(url_for('index'))
+
 @app.route("/")
 @app.route("/index")
 def index():
