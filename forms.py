@@ -8,8 +8,8 @@ class UserForm(Form):
         validators.Length(min=4, max=20, message='Please enter a valid nombre.')
     ])
 
-    apaterno = StringField('apaterno', [
-        validators.DataRequired('Please enter a valid apaterno.'),
+    apellidos = StringField('apellidos', [
+        validators.DataRequired('Please enter a valid apellidos.'),
     ])
 
     email = StringField('email', [
