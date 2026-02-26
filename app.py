@@ -30,7 +30,7 @@ def alumno():
 	if request.method == 'POST':
 		create_form = forms.UserForm(request.form)
 
-		alumno = Alumno(nombre=create_form.nombre.data, apellidos=create_form.apaterno.data, email=create_form.email.data)
+		alumno = Alumno(nombre=create_form.nombre.data, apellidos=create_form.apellidos.data, email=create_form.email.data, telefono=create_form.telefono.data)
 		db.session.add(alumno)
 		db.session.commit()
 
@@ -47,7 +47,7 @@ def alumno():
 def detalles():
 	alumno = Alumno.query.get(request.args.get('id'))
 
-	return render_template('detalles.html', nombre=alumno.nombre, apaterno=alumno.apaterno, email=alumno.email)
+	return render_template('detalles.html', nombre=alumno.nombre, apellidos=alumno.apellidos, email=alumno.email, telefono=alumno.telefono)
 
 
 @app.route("/modificar", methods=['GET', 'POST'])
@@ -64,8 +64,10 @@ def modificar():
 		alumno.nombre = create_form.nombre.data
 		alumno.apellidos = create_form.apellidos.data
 		alumno.email = create_form.email.data
+		alumno.telefono = create_form.telefono.data
 
 		db.session.commit()
+		return redirect(url_for('index'))
 
 @app.route("/eliminar", methods=['GET', 'POST'])
 def eliminar():

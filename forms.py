@@ -16,3 +16,8 @@ class UserForm(Form):
         validators.DataRequired('Please enter a valid email.'),
         validators.Email('Please enter a valid email.')
     ])
+
+    telefono = StringField('telefono', [
+        validators.DataRequired('Please enter a valid telefono.'),
+        validators.Length(min=10, max=10, message='Please enter a valid telefono.')
+    ])
