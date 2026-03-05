@@ -2,8 +2,18 @@
 
 {% block container %}
 
+{% if errors %}
+    <ul>
+    {% for campo, mensajes in errors.items() %}
+        {% for mensaje in mensajes %}
+            <li>{{ mensaje }}</li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% endif %}
+
 <div class="flex justify-center align-center">
-<form class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg" method="post" action="/modificar">
+<form class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg" method="post" action="{{ url_for('alumnos.modificar') }}">
 
     <div class="flex gap-6">
 

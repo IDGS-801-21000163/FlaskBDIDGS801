@@ -14,7 +14,7 @@ class="fixed inset-0 z-50 flex justify-center items-center bg-black/50">
                 <svg class="mx-auto mb-4 text-fg-disabled w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
                 <h3 class="mb-6 text-body">A continuación borrarás al alumno: {{alumno.nombre + ' ' + alumno.apellidos or ''}} <br> Con correo: {{alumno.email}}</h3>
                 <div class="flex items-center space-x-4 justify-center">
-                    <form method="POST" action="/eliminar">
+                    <form method="POST" action="{{ url_for('alumnos.eliminar') }}">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
     <input type="hidden" name="id" value="{{alumno.id}}">
@@ -24,7 +24,7 @@ class="fixed inset-0 z-50 flex justify-center items-center bg-black/50">
         Estoy seguro
     </button>
 </form>
-                    <a href="/">
+                    <a href="{{ url_for('alumnos.alumno') }}">
                         <button data-modal-hide="popup-modal" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">No, cancelar</button>
                     </a>
                 </div>

@@ -1,23 +1,72 @@
-from wtforms import Form, IntegerField, validators, StringField
+from wtforms import EmailField, Form, IntegerField, StringField, validators
 
 
-class UserForm(Form):
-    id = IntegerField('id', [validators.number_range(min=0, max=20, message='Please enter a valid id.')])
-    nombre = StringField('nombre', [
-        validators.DataRequired('Please enter a valid nombre.'),
-        validators.Length(min=4, max=20, message='Please enter a valid nombre.')
-    ])
+class AlumnoForm(Form):
+    nombre = StringField(
+        "nombre",
+        [
+            validators.DataRequired(message="El nombre es requerido"),
+            validators.Length(min=2, max=100, message="El nombre debe tener entre 2 y 100 caracteres"),
+        ],
+    )
+    apellidos = StringField(
+        "apellidos",
+        [
+            validators.DataRequired(message="Los apellidos son requeridos"),
+            validators.Length(min=2, max=200, message="Los apellidos deben tener entre 2 y 200 caracteres"),
+        ],
+    )
+    email = EmailField(
+        "email",
+        [
+            validators.DataRequired(message="El correo es requerido"),
+            validators.Email(message="Ingrese un correo valido"),
+            validators.Length(max=150, message="El correo no debe exceder 150 caracteres"),
+        ],
+    )
+    telefono = StringField(
+        "telefono",
+        [
+            validators.DataRequired(message="El telefono es requerido"),
+            validators.Length(min=10, max=20, message="El telefono debe tener entre 10 y 20 caracteres"),
+        ],
+    )
 
-    apellidos = StringField('apellidos', [
-        validators.DataRequired('Please enter a valid apellidos.'),
-    ])
 
-    email = StringField('email', [
-        validators.DataRequired('Please enter a valid email.'),
-        validators.Email('Please enter a valid email.')
-    ])
-
-    telefono = StringField('telefono', [
-        validators.DataRequired('Please enter a valid telefono.'),
-        validators.Length(min=10, max=10, message='Please enter a valid telefono.')
-    ])
+class MaestroForm(Form):
+    matricula = IntegerField(
+        "matricula",
+        [
+            validators.DataRequired(message="La matricula es requerida"),
+            validators.NumberRange(min=1, message="La matricula debe ser mayor a 0"),
+        ],
+    )
+    nombre = StringField(
+        "nombre",
+        [
+            validators.DataRequired(message="El nombre es requerido"),
+            validators.Length(min=2, max=50, message="El nombre debe tener entre 2 y 50 caracteres"),
+        ],
+    )
+    apellidos = StringField(
+        "apellidos",
+        [
+            validators.DataRequired(message="Los apellidos son requeridos"),
+            validators.Length(min=2, max=50, message="Los apellidos deben tener entre 2 y 50 caracteres"),
+        ],
+    )
+    especialidad = StringField(
+        "especialidad",
+        [
+            validators.DataRequired(message="La especialidad es requerida"),
+            validators.Length(min=2, max=50, message="La especialidad debe tener entre 2 y 50 caracteres"),
+        ],
+    )
+    email = EmailField(
+        "email",
+        [
+            validators.DataRequired(message="El correo es requerido"),
+            validators.Email(message="Ingrese un correo valido"),
+            validators.Length(max=50, message="El correo no debe exceder 50 caracteres"),
+        ],
+    )
