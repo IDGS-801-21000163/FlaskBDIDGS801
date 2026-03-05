@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="max-w-5xl mx-auto space-y-6">
+    <div>
+        <a href="{{ url_for('cursos.index') }}" class="text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-sm px-4 py-2.5 inline-block">Regresar</a>
+    </div>
+
+    <div class="bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs">
+        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">{{ curso.nombre }}</h5>
+        <p class="text-body">Descripcion: {{ curso.descripcion }}</p>
+        <p class="text-body">Maestro: {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}</p>
+        <p class="text-body">Email maestro: {{ curso.maestro.email }}</p>
+    </div>
+
+    <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+        <div class="p-4 font-semibold text-heading">Alumnos inscritos</div>
+        <table class="w-full text-sm text-left rtl:text-right text-body">
+            <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-t border-default-medium">
+            <tr>
+                <th class="px-6 py-3 font-medium">ID</th>
+                <th class="px-6 py-3 font-medium">Nombre</th>
+                <th class="px-6 py-3 font-medium">Apellidos</th>
+                <th class="px-6 py-3 font-medium">Email</th>
+                <th class="px-6 py-3 font-medium">Telefono</th>
+                <th class="px-6 py-3 font-medium">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for inscripcion in curso.inscripciones %}
+            <tr class="bg-neutral-primary-soft border-b border-default hover:bg-neutral-secondary-medium">
+                <td class="px-6 py-4">{{ inscripcion.alumno.id }}</td>
+                <td class="px-6 py-4">{{ inscripcion.alumno.nombre }}</td>
+                <td class="px-6 py-4">{{ inscripcion.alumno.apellidos }}</td>
+                <td class="px-6 py-4">{{ inscripcion.alumno.email }}</td>
+                <td class="px-6 py-4">{{ inscripcion.alumno.telefono }}</td>
+                <td class="px-6 py-4">
+                    <a href="{{ url_for('alumnos.detalles', id=inscripcion.alumno.id) }}" class="text-white bg-success px-3 py-2 rounded-base inline-flex items-center justify-center">Ver alumno</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% if not curso.inscripciones %}
+            <tr>
+                <td colspan="6" class="text-center py-6 text-body">No hay alumnos inscritos en este curso</td>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

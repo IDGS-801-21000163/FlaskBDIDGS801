@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="flex justify-center align-center">
+    <form class="max-w-md w-full bg-white p-8 rounded-xl shadow-lg" method="post" action="{{ url_for('inscripciones.agregar') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="relative z-0 w-full mb-5 group">
+            <select name="alumno_id" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-500" required>
+                <option value="" selected disabled>Selecciona un alumno</option>
+                {% for alumno in alumnos %}
+                <option value="{{ alumno.id }}">{{ alumno.id }} - {{ alumno.nombre }} {{ alumno.apellidos }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group">
+            <select name="curso_id" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-500" required>
+                <option value="" selected disabled>Selecciona un curso</option>
+                {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.id }} - {{ curso.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button class="text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-sm px-4 py-2.5">Crear</button>
+    </form>
+</div>
+
+{% endblock %}

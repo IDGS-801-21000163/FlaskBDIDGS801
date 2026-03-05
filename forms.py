@@ -70,3 +70,44 @@ class MaestroForm(Form):
             validators.Length(max=50, message="El correo no debe exceder 50 caracteres"),
         ],
     )
+
+
+class CursoForm(Form):
+    nombre = StringField(
+        "nombre",
+        [
+            validators.DataRequired(message="El nombre del curso es requerido"),
+            validators.Length(min=2, max=150, message="El nombre del curso debe tener entre 2 y 150 caracteres"),
+        ],
+    )
+    descripcion = StringField(
+        "descripcion",
+        [
+            validators.DataRequired(message="La descripcion es requerida"),
+            validators.Length(min=5, message="La descripcion debe tener al menos 5 caracteres"),
+        ],
+    )
+    maestro_id = IntegerField(
+        "maestro_id",
+        [
+            validators.DataRequired(message="El maestro es requerido"),
+            validators.NumberRange(min=1, message="Maestro invalido"),
+        ],
+    )
+
+
+class InscripcionForm(Form):
+    alumno_id = IntegerField(
+        "alumno_id",
+        [
+            validators.DataRequired(message="El alumno es requerido"),
+            validators.NumberRange(min=1, message="Alumno invalido"),
+        ],
+    )
+    curso_id = IntegerField(
+        "curso_id",
+        [
+            validators.DataRequired(message="El curso es requerido"),
+            validators.NumberRange(min=1, message="Curso invalido"),
+        ],
+    )

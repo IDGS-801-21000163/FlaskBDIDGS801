@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div id="popup-modal" tabindex="-1" class="fixed inset-0 z-50 flex justify-center items-center bg-black/50">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
+            <div class="p-4 md:p-5 text-center">
+                <h3 class="mb-6 text-body">A continuación borrarás el curso: {{ curso.nombre }}</h3>
+                <div class="flex items-center space-x-4 justify-center">
+                    <form method="POST" action="{{ url_for('cursos.eliminar') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="id" value="{{ curso.id }}">
+                        <button type="submit" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                            Estoy seguro
+                        </button>
+                    </form>
+                    <a href="{{ url_for('cursos.index') }}" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        No, cancelar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

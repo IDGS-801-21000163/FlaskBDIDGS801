@@ -3,11 +3,15 @@
 {% block container %}
 
 <div class="flex justify-center">
-    <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
-        <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">{{ maestro.nombre }} {{ maestro.apellidos }}</h5>
-        <p class="text-body">Matricula: {{ maestro.matricula }}</p>
-        <p class="text-body">Especialidad: {{ maestro.especialidad }}</p>
-        <p class="text-body">{{ maestro.email }}</p>
+    <div class="w-full max-w-sm">
+        <a href="{{ url_for('maestros.maestro') }}" class="text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-sm px-4 py-2.5 inline-block mb-4">Regresar</a>
+
+        <div class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:bg-neutral-secondary-medium">
+            <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">{{ maestro.nombre }} {{ maestro.apellidos }}</h5>
+            <p class="text-body">Matricula: {{ maestro.matricula }}</p>
+            <p class="text-body">Especialidad: {{ maestro.especialidad }}</p>
+            <p class="text-body">{{ maestro.email }}</p>
+        </div>
     </div>
 </div>
 
